@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places Around the World</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .place {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .place-description {
+            flex: 1;
+            max-width: 400px;
+            text-align: justify;
+        }
+
+        .place-image {
+            flex: 1;
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Amazing Places Around the World</h1>
+        <p>Explore these beautiful destinations.</p>
+    </header>
+
+    <div class="container">
+        <div class="place">
+            <div class="place-description">
+                <h2>Paris, France</h2>
+                <p>Paris, often called the City of Love, is known for its romantic ambiance, iconic landmarks like the
+                    Eiffel Tower, Louvre Museum, and delicious cuisine.</p>
+                <ul>
+                    <li>Visit the Eiffel Tower for breathtaking views.</li>
+                    <li>Explore art and history at the Louvre.</li>
+                    <li>Savor delicious croissants and macarons.</li>
+                </ul>
+            </div>
+            <div class="place-image">
+                <img src="images/paris.jpg" alt="Eiffel Tower in Paris">
+            </div>
+        </div>
+
+        <div class="place">
+            <div class="place-description">
+                <h2>Santorini, Greece</h2>
+                <p>Santorini is a stunning Greek island known for its white-washed buildings, crystal-clear waters, and
+                    beautiful sunsets.</p>
+                <ul>
+                    <li>Relax on unique black sand beaches.</li>
+                    <li>Explore charming villages like Oia.</li>
+                    <li>Witness one of the world's most famous sunsets.</li>
+                </ul>
+            </div>
+            <div class="place-image">
+                <img src="images/img2.avif" alt="Santorini, Greece">
+            </div>
+        </div>
+
+        <div class="place">
+            <div class="place-description">
+                <h2>Kyoto, Japan</h2>
+                <p>Kyoto is a historic city in Japan known for its traditional temples, beautiful gardens, and rich
+                    cultural heritage.</p>
+                <ul>
+                    <li>Visit the iconic Kinkaku-ji (Golden Pavilion) temple.</li>
+                    <li>Explore the serene Arashiyama Bamboo Grove.</li>
+                    <li>Experience a traditional tea ceremony.</li>
+                </ul>
+            </div>
+            <div class="place-image">
+                <img src="images/kyoto.jpg" alt="kyoto, japan">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
