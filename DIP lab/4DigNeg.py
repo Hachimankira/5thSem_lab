@@ -1,7 +1,7 @@
 import cv2
 import os
 
-image_path = 'me.jpg'
+image_path = 'rubina.jpg'
 output_folder = 'output_image'
 
 image = cv2.imread(image_path)

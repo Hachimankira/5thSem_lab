@@ -16,7 +16,7 @@ def piecewise_linear_transform_color(img):
 
     return transformed_img
 
-image_path = 'nature.jpg'
+image_path = 'rubina.jpg'
 output_folder = 'output_image'
 original_img = cv2.imread(image_path)
 output_image_path = os.path.join(output_folder, '8.jpg')

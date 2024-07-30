@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab1|Product Categories</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <form id="addCategoryForm" class="form-inline mb-4">
+            <input type="text" id="newCategoryName" class="form-control mr-2" placeholder="Category Name" required>
+            <button type="submit" class="btn btn-primary">Add Category</button>
+        </form>
+        <form id="addItemForm" class="form-inline mb-4">
+            <select id="categorySelect" class="form-control mr-2"></select>
+            <input type="text" id="newItemName" class="form-control mr-2" placeholder="Item Name" required>
+            <input type="number" id="newItemPrice" class="form-control mr-2" placeholder="Item Price" step="0.01" required>
+            <button type="submit" class="btn btn-primary">Add Item</button>
+        </form>
+        <h2>Product Categories</h2>
+        <div id="categories" class="mb-4 d-flex flex-row"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        const storeData = {
+            categories: [
+                { name: "Smart Phone", items: [{ name: "Samsung", price: 699 }, { name: "Apple", price: 999 }, { name: "Nothing", price: 499 }] },
+                { name: "Laptop", items: [{ name: "Acer", price: 799 }, { name: "Asus", price: 899 }, { name: "Dell", price: 1099 }] }
+            ]
+        };
+
+        function updateUI() {
+            const categoriesDiv = $('#categories').empty();
+            const categorySelect = $('#categorySelect').empty();
+            storeData.categories.forEach(category => {
+                categoriesDiv.append(`
+                    <div class="card mb-3 p-2 m-2">
+                        <div class="card-body">
+                            <h5 class="card-title">${category.name}</h5>
+                            <ul class="list-group list-group-flush">
+                                ${category.items.map(item => `<li class="list-group-item">${item.name} - $${item.price.toFixed(2)}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>`);
+                categorySelect.append(`<option>${category.name}</option>`);
+            });
+        }
+
+        $('#addCategoryForm').submit(function (e) {
+            e.preventDefault();
+            storeData.categories.push({ name: $('#newCategoryName').val(), items: [] });
+            $('#newCategoryName').val('');
+            updateUI();
+        });
+
+        $('#addItemForm').submit(function (e) {
+            e.preventDefault();
+            
+            const category = storeData.categories.find(cat => cat.name === $('#categorySelect').val());
+            const newItemName = $('#newItemName').val();
+            const newItemPrice = parseFloat($('#newItemPrice').val());
+            
+            category.items.push({ name: newItemName, price: newItemPrice });
+            
+            $('#newItemName').val('');
+            $('#newItemPrice').val('');
+            
+            updateUI();
+        });
+
+        updateUI();
+    </script>
+</body>
+</html>

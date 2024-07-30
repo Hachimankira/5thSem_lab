@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab2|Shopping Cart</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <div class="row">
+        <div class="products p-2 col-sm-8">
+            <h2>Products:</h2>
+            <div class="product mb-4" data-id="1" data-name="Bike A" data-price="100">
+                <h2>Bike A</h2>
+                <p>$100</p>
+                <button class="add-to-cart btn btn-primary">Add to Cart</button>
+            </div>
+            <div class="product mb-4" data-id="2" data-name="Bike B" data-price="150">
+                <h2>Bike B</h2>
+                <p>$150</p>
+                <button class="add-to-cart btn btn-primary">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="cart col-sm-4 align-items-center mb-2">
+            <h2>Shopping Cart</h2>
+            <ul class="cart-items"></ul>
+            <p>Total: $<span class="cart-total">0</span></p>
+            <button class="checkout btn btn-primary">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = [];
+
+            const products = document.querySelectorAll('.product');
+            const cartItems = document.querySelector('.cart-items');
+            const cartTotal = document.querySelector('.cart-total');
+
+            products.forEach(product => {
+                product.querySelector('.add-to-cart').addEventListener('click', () => {
+                    const id = product.dataset.id;
+                    const name = product.dataset.name;
+                    const price = parseFloat(product.dataset.price);
+
+                    addToCart(id, name, price);
+                    updateCart();
+                });
+            });
+
+            function addToCart(id, name, price) {
+                const existingItem = cart.find(item => item.id === id);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ id, name, price, quantity: 1 });
+                }
+            }
+
+            function updateCart() {
+                cartItems.innerHTML = '';
+                let total = 0;
+                cart.forEach(item => {
+                    const cartItem = document.createElement('li');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        ${item.name} - $${item.price} x ${item.quantity}
+                        <button class="remove-from-cart btn btn-danger btn-sm mb-2" data-id="${item.id}">Remove</button>
+                    `;
+                    cartItems.appendChild(cartItem);
+                    total += item.price * item.quantity;
+                });
+                cartTotal.textContent = total.toFixed(2);
+
+                document.querySelectorAll('.remove-from-cart').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const id = button.dataset.id;
+                        removeFromCart(id);
+                        updateCart();
+                    });
+                });
+            }
+
+            function removeFromCart(id) {
+                const index = cart.findIndex(item => item.id === id);
+                if (index !== -1) {
+                    cart.splice(index, 1);
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

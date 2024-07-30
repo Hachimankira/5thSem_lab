@@ -2,7 +2,7 @@ import cv2
 import matplotlib.pyplot as plt
 import os
 
-image_path = 'me.jpg'
+image_path = 'rubina.jpg'
 output_folder = 'output_image'
 output_image = os.path.join(output_folder, '5.jpg')
 

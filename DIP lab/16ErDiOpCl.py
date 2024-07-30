@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-img = cv2.imread('nature.jpg')
+img = cv2.imread('boudh.jpg')
 
 output_folder = 'output_image'
 os.makedirs(output_folder, exist_ok=True)

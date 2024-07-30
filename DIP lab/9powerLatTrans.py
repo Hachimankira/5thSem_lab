@@ -10,7 +10,7 @@ def power_law_transform_color(img, gamma):
 
     return transformed_img
 
-image_path = 'nature.jpg'
+image_path = 'rubina.jpg'
 original_img = cv2.imread(image_path)
 output_folder = 'output_image'
 output_image_path = os.path.join(output_folder, '9.jpg')

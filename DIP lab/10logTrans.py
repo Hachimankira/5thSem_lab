@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import os
 
-img=cv2.imread('nature.jpg')
+img=cv2.imread('rubina.jpg')
 c=(255/np.log(1+np.max(img)))
 log_time_img = c*np.log(1+img)
 log_time_img=np.array(log_time_img, dtype=np.uint8)

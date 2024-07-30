@@ -13,7 +13,7 @@ def extract_edges(image_path):
     return original_image, edges
 
 if __name__ == "__main__":
-    image_path = 'nature.jpg'
+    image_path = 'boudh.jpg'
     output_folder = 'output_image'
     output_image_path = os.path.join(output_folder, '20.jpg')
     original, edges = extract_edges(image_path)
