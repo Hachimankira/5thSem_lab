@@ -1,0 +1,24 @@
+<!-- Views/Employee/Index.cshtml -->
+@model IEnumerable<EmployeeManagement.Models.Employee>
+
+<h2>Employee List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Position</td>
+                <td>@item.Salary</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
